@@ -9,7 +9,7 @@ trigger:
 pool:
   vmImage: 'ubuntu-18.04'
   demands:
-  -npm
+  - npm
 
 variables:
   buildConfiguration: 'Release'
@@ -22,7 +22,7 @@ steps:
     version: 3.1.300
 
 - task: Npm@1
-  displayName : 'Run npm install'
+  displayName: 'Run npm install'
   inputs:
     verbose: false
 
