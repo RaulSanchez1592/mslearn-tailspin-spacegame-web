@@ -29,8 +29,8 @@ steps:
 - script: './node_modules/.bin/node-sass Tailspin.SpaceGame.Web/wwwroot --output Tailspin.SpaceGame.Web/wwwroot'    
   displayName: 'Compile Sass assets'
 
-- task: glup@1
-  displayName: 'Run glup task'  
+- task: gulp@1
+  displayName: 'Run gulp task'  
 
 - script: 'echo "$(Build.DefinitionName), $(BuildBuildId), $(Build.BuildNumber)" > buildinfo.txt'  
   displayName: 'Write build info'
