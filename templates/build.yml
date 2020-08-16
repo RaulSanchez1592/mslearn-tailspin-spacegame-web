@@ -2,6 +2,8 @@ parameters:
   buildConfiguration: 'Release'
 
 steps:
+
+#Compila proyecto
 - task: DotNetCoreCLI@2
   displayName: 'Build the project - ${{ parameters.buildConfiguration }} '
   inputs:
@@ -9,6 +11,7 @@ steps:
     arguments: '--no-restore --configuration ${{ parameters.buildConfiguration }} '
     projects: '**/*.csproj'
 
+# Publica zipeado del proyecto
 - task: DotNetCoreCLI@2
   displayName: 'Publish the project - ${{ parameters.builsConfioguration }} '
   inputs:
