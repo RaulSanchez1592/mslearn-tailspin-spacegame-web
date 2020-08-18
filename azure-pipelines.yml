@@ -45,11 +45,20 @@ steps:
     arguments: '--no-restore --configuration $(buildConfiguration)'
     projects: '**/*.csproj'
 
-- task: PowerShell@2
-  displayName: 'Run unit tests - $(buildConfiguration)'
+- task: UseDotNet@2
+  displayName: 'Use .Net Core sdk 2.1.x'
+  inputs:
+    packageType: sdk
+    version: 2.1.x
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+    includePreviewVersions: true
+
+- task: DotNetCoreCLI@2
+  displayNAme: 'Run unit tests - $(buildConfiguration)'
   inputs: 
-    targetType: inline
-    script: Get-ChildItem
+    command: 'test'
+    arguments: '--no-build --configuration $(buildConfiguration)'
+    publishTestResults: true
     projects: '**/*.Test.csproj'
 
 - task: DotNetCoreCLI@2
