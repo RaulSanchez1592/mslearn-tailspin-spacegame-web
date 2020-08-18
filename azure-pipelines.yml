@@ -45,20 +45,12 @@ steps:
     arguments: '--no-restore --configuration $(buildConfiguration)'
     projects: '**/*.csproj'
 
-- task: UseDotNet@2
-  displayName: 'Use .Net Core sdk 2.1.x'
-  inputs:
-    packageType: sdk
-    version: 2.1.x
-    installationPath: $(Agent.ToolsDirectory)/dotnet
-    includePreviewVersions: true
-
 - task: DotNetCoreCLI@2
   displayName: 'Run unit tests - $(buildConfiguration)'
   inputs: 
     command: 'test'
     arguments: '--no-build --configuration $(buildConfiguration)'
-    publishTestResults: true
+    publishTestResults: false
     projects: '**/*.Test.csproj'
 
 - task: DotNetCoreCLI@2
