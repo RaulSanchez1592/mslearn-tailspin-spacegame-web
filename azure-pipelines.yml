@@ -17,11 +17,6 @@ steps:
   inputs:
     version: '$(dotnetSdkVersion)'
 
-- task: DotNetCoreInstaller@0
-  displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
-  inputs:
-    version: '$(dotnetSdkVersion)'    
-
 - task: Npm@1
   displayName: 'Run npm install'
   inputs:
@@ -54,7 +49,7 @@ steps:
   displayName: 'Run unit tests - $(buildConfiguration)'
   inputs: 
     command: 'test'
-    arguments: '--no-build --configuration $(buildConfiguration)'
+    arguments: '--configuration $(buildConfiguration) --no-build'
     publishTestResults: false
     projects: '**/*.Test.csproj'
 
