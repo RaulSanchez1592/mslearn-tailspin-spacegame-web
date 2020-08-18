@@ -46,9 +46,9 @@ steps:
     projects: '**/*.csproj'
 
 - task: DotNetCoreCLI@2
-  displayNAme: 'Run unit tests - $(buildConfiguration)'
+  displayName: 'Run unit tests - $(buildConfiguration)'
   inputs: 
-    comand: 'test'
+    command: 'test'
     arguments: '--no-build --configuration $(buildConfiguration)'
     publishTestResults: true
     projects: '**/*.Test.csproj'
