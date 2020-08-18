@@ -54,7 +54,7 @@ steps:
     includePreviewVersions: true
 
 - task: DotNetCoreCLI@2
-  displayNAme: 'Run unit tests - $(buildConfiguration)'
+  displayName: 'Run unit tests - $(buildConfiguration)'
   inputs: 
     command: 'test'
     arguments: '--no-build --configuration $(buildConfiguration)'
