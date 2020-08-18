@@ -45,12 +45,11 @@ steps:
     arguments: '--no-restore --configuration $(buildConfiguration)'
     projects: '**/*.csproj'
 
-- task: DotNetCoreCLI@2
+- task: PowerShell@2
   displayName: 'Run unit tests - $(buildConfiguration)'
   inputs: 
-    command: 'test'
-    arguments: '--no-build --configuration $(buildConfiguration)'
-    publishTestResults: true
+    targetType: inline
+    script: Get-ChildItem
     projects: '**/*.Test.csproj'
 
 - task: DotNetCoreCLI@2
