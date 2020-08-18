@@ -50,7 +50,7 @@ steps:
   inputs: 
     command: 'test'
     arguments: '--configuration $(buildConfiguration) --no-build'
-    publishTestResults: false
+    publishTestResults: true
     projects: '**/*.Tests.csproj'
 
 - task: DotNetCoreCLI@2
@@ -58,7 +58,7 @@ steps:
   inputs:
     command: 'publish'
     projects: '**/*.csproj'
-    publishWebProjects: true
+    publishWebProjects: false
     arguments: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
     zipAfterPublish: true
 
