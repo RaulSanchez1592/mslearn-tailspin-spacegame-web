@@ -1,6 +1,6 @@
 trigger:
 - '*'
-#Coment
+
 pool:
   vmImage: 'ubuntu-18.04'
   demands:
@@ -45,6 +45,7 @@ steps:
     arguments: '--no-restore --configuration $(buildConfiguration)'
     projects: '**/*.csproj'
 
+# Instalacion de versiones especificadas en manifest
 - task: DotNetCoreCLI@2
   displayName: 'Install .NET Core tools from local manifest'
   inputs:
