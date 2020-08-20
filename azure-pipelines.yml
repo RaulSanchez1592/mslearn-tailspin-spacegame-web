@@ -12,6 +12,13 @@ variables:
   dotnetSdkVersion: '3.1.300'
 
 steps:
+  condition: |
+    and
+    (
+      succeeded(),
+      eq(variables['Build.Reason'], 'PullRequest'),
+      eq(variables['System.PullRequest.TargetBranch'], 'master')
+    )
 - task: UseDotNet@2
   displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
   inputs:
@@ -56,13 +63,7 @@ steps:
 
 - task: WhiteSource Bolt@20
   displayName: 'Run WhiteSource Bolt'
-  condition: |
-  and
-  (
-    succeeded(),
-    eq(variables['Build.Reason'], 'PullRequest'),
-    eq(variables['System.PullRequest.TargetBranch'], 'master')
-  )
+  
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
